@@ -1,8 +1,11 @@
+import functools
+
 from fastapi import FastAPI, staticfiles
 from fastapi.responses import RedirectResponse
 from starlette.middleware.cors import CORSMiddleware
 
 from api import routers
+from core.settings import settings
 
 app = FastAPI()
 
@@ -18,9 +21,14 @@ app.add_middleware(
 )
 
 
+@functools.lru_cache
+def get_settings():
+    return settings
+
+
 @app.get(path='/', status_code=200)
 def root():
-    return RedirectResponse(url='http://localhost:8000/login')
+    return RedirectResponse(url=f'{get_settings().APP_BASE_URL}/login')
 
 
 @app.post(path='/login', status_code=200)
