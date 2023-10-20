@@ -2,6 +2,8 @@ from fastapi import Request, APIRouter
 from fastapi.responses import JSONResponse
 from starlette.templating import Jinja2Templates
 
+from main import get_settings
+
 templates = Jinja2Templates(directory='app/static/templates')
 
 router = APIRouter(tags=['FRONTEND'])
@@ -19,4 +21,4 @@ def home(request: Request):
 
 @router.get(path='/logout', status_code=200)
 def logout():
-    return JSONResponse(content='http://localhost:8000/login')
+    return JSONResponse(content=f'{get_settings().APP_BASE_URL}/login')
