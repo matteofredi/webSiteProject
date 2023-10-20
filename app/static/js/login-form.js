@@ -27,12 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 let form = document.querySelector('form')
                 let formData = new FormData(form);
 
-                const URL = 'http://localhost:8000/auth/token'
+                // const URL = 'http://localhost:8000/secure-data'
+                // const requestOptions = {
+                //     method: 'POST',
+                //     body: (new URLSearchParams(formData)).toString(),
+                //     headers: {"Content-type": "application/x-www-form-urlencoded"}
+                // }
+
+                const URL = 'http://localhost:8000/secure-data'
+                let tokenB64 = btoa(formData.get('username') + ":" + formData.get('password'))
+
                 const requestOptions = {
-                    method: 'POST',
-                    body: (new URLSearchParams(formData)).toString(),
-                    headers: {"Content-type": "application/x-www-form-urlencoded"}
+                    method: 'GET',
+                    headers: {"Authorization": "Basic " + tokenB64}
                 }
+
                 login(URL, requestOptions);
             }
         )
