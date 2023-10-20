@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link type="text/css" href="{{ request.url_for('static', path='css/login-form.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="../css/login-form.css">
     <link rel="icon" href="{{ request.url_for('static', path='images/favicon-32x32.png') }}">
     <script type="text/javascript" src="{{ request.url_for('static', path='js/login-form.js') }}"></script>
     <title>Login</title>
@@ -12,7 +11,6 @@
 <body>
 <form method="post">
     <img src="{{ request.url_for('static', path='images/hacker.png') }}">
-<!--    <img src="../images/hacker.png">-->
     <label for="username">Username</label>
     <input type="text" name="username" id="username" required>
     <label for="password">Password</label>
