@@ -1,5 +1,5 @@
 from fastapi import FastAPI, staticfiles
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import RedirectResponse
 from starlette.middleware.cors import CORSMiddleware
 
 from api import routers
